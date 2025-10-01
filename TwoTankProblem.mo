@@ -143,7 +143,7 @@ package TwoTankProblem
       Placement(transformation(origin = {6, 16}, extent = {{-24, -24}, {24, 24}})));
     Modelica.Blocks.Sources.Constant inflow(k = 5) annotation(
       Placement(transformation(origin = {-204, 14}, extent = {{-14, -14}, {14, 14}})));
-    Modelica.Blocks.Continuous.LimPID PID(Ti = 10, yMax = 30, yMin = 10, k = 100, controllerType = Modelica.Blocks.Types.SimpleController.PID, Td = 10, Nd = 5) annotation(
+    Modelica.Blocks.Continuous.LimPID PID(Ti = 100, yMax = 30, yMin = 10, k = 100, controllerType = Modelica.Blocks.Types.SimpleController.PI, Td = 10, Nd = 5) annotation(
       Placement(transformation(origin = {-144, 14}, extent = {{-10, -10}, {10, 10}})));
     TankWithVariableValve Tank11(Area = 4, init_height = 25) annotation(
       Placement(transformation(origin = {166, 16}, extent = {{-22, -22}, {22, 22}})));
@@ -171,17 +171,17 @@ package TwoTankProblem
   end ClosedLoopBiControl;
   
   model ClosedLoopBiControlK2
-    Tank tank1(Area = 4, DischargeCoefficient = 0.8, init_height = 0) annotation(
+    Tank tank1(Area = 4, DischargeCoefficient = 0.8, init_height = 30) annotation(
       Placement(transformation(origin = {8, 28}, extent = {{-24, -24}, {24, 24}})));
-    Modelica.Blocks.Continuous.LimPID PID(Ti = 10, yMax = 4, yMin = 0, k = 10, controllerType = Modelica.Blocks.Types.SimpleController.PID, Td = 10, Nd = 5) annotation(
+    Modelica.Blocks.Continuous.LimPID PID(Ti = 100, yMax = 4, yMin = 0, k = 1000, controllerType = Modelica.Blocks.Types.SimpleController.PID, Td = 1, Nd = 5) annotation(
       Placement(transformation(origin = {-80, 28}, extent = {{-10, -10}, {10, 10}})));
-    TankWithVariableValve Tank11(Area = 4, init_height = 0) annotation(
+    TankWithVariableValve Tank11(Area = 4, init_height = 30) annotation(
       Placement(transformation(origin = {166, 28}, extent = {{-22, -22}, {22, 22}})));
-  Modelica.Blocks.Continuous.LimPID PID1(Nd = 5, Td = 10, Ti = 1, controllerType = Modelica.Blocks.Types.SimpleController.PID, k = 100, yMax = 1, yMin = 0) annotation(
-      Placement(transformation(origin = {-80, -52}, extent = {{-10, -10}, {10, 10}})));
-  Modelica.Blocks.Sources.Constant inflow1(k = 30) annotation(
-      Placement(transformation(origin = {-256, 8}, extent = {{-14, -14}, {14, 14}})));
-  Modelica.Blocks.Continuous.LimPID PID2(Nd = 5, Td = 10, Ti = 10, controllerType = Modelica.Blocks.Types.SimpleController.PI, k = 100, yMax = 30, yMin = 10) annotation(
+  Modelica.Blocks.Continuous.LimPID PID1(Nd = 5, Td = 10, Ti = 10, controllerType = Modelica.Blocks.Types.SimpleController.PID, k = 100, yMax = 1, yMin = 0) annotation(
+      Placement(transformation(origin = {-80, -50}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Sources.Constant inflow1(k = 10) annotation(
+      Placement(transformation(origin = {-258, 10}, extent = {{-14, -14}, {14, 14}})));
+  Modelica.Blocks.Continuous.LimPID PID2(Nd = 5, Td = 10, Ti = 150, controllerType = Modelica.Blocks.Types.SimpleController.PI, k = 10, yMax = 30, yMin = 10) annotation(
       Placement(transformation(origin = {-196, 28}, extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Math.Add add(k1 = 1, k2 = -1)  annotation(
       Placement(transformation(origin = {8, -46}, extent = {{-10, -10}, {10, 10}})));
@@ -193,19 +193,19 @@ package TwoTankProblem
     connect(PID.y, tank1.qin) annotation(
       Line(points = {{-69, 28}, {-22, 28}}, color = {0, 0, 127}));
     connect(PID1.u_m, Tank11.heightOut) annotation(
-      Line(points = {{-80, -64}, {-80, -70}, {216, -70}, {216, 18}, {192, 18}}, color = {0, 0, 127}));
+      Line(points = {{-80, -62}, {-80, -70}, {216, -70}, {216, 18}, {192, 18}}, color = {0, 0, 127}));
     connect(PID2.y, PID.u_s) annotation(
       Line(points = {{-185, 28}, {-92, 28}}, color = {0, 0, 127}));
     connect(PID2.u_m, Tank11.heightOut) annotation(
       Line(points = {{-196, 16}, {-196, -10}, {214, -10}, {214, 18}, {192, 18}}, color = {0, 0, 127}));
   connect(inflow1.y, PID2.u_s) annotation(
-      Line(points = {{-240.6, 8}, {-226.6, 8}, {-226.6, 28}, {-208.6, 28}}, color = {0, 0, 127}));
+      Line(points = {{-243, 10}, {-226.6, 10}, {-226.6, 28}, {-208.6, 28}}, color = {0, 0, 127}));
   connect(PID1.u_s, inflow1.y) annotation(
-      Line(points = {{-92, -52}, {-226, -52}, {-226, 8}, {-240, 8}}, color = {0, 0, 127}));
+      Line(points = {{-92, -50}, {-226, -50}, {-226, 10}, {-243, 10}}, color = {0, 0, 127}));
   connect(tank1.out_height, PID.u_m) annotation(
       Line(points = {{36.8, 16.96}, {56.8, 16.96}, {56.8, -1.04}, {-79.2, -1.04}, {-79.2, 16.96}}, color = {0, 0, 127}));
   connect(PID1.y, add.u2) annotation(
-      Line(points = {{-69, -52}, {-5, -52}}, color = {0, 0, 127}));
+      Line(points = {{-69, -50}, {-37, -50}, {-37, -52}, {-5, -52}}, color = {0, 0, 127}));
   connect(inflow11.y, add.u1) annotation(
       Line(points = {{-33, -28}, {-17, -28}, {-17, -40}, {-5, -40}}, color = {0, 0, 127}));
   connect(add.y, Tank11.k_control) annotation(
@@ -213,6 +213,50 @@ package TwoTankProblem
     annotation(
       experiment(StartTime = 0, StopTime = 600, Tolerance = 1e-06, Interval = 1.2));
   end ClosedLoopBiControlK2;
+  
+  model ClosedLoopBiControlK2Hysterisis
+    Tank tank1(Area = 4, DischargeCoefficient = 0.8, init_height = 30) annotation(
+      Placement(transformation(origin = {8, 28}, extent = {{-24, -24}, {24, 24}})));
+    Modelica.Blocks.Continuous.LimPID PID(Ti = 100, yMax = 4, yMin = 0, k = 1000, controllerType = Modelica.Blocks.Types.SimpleController.PID, Td = 1, Nd = 5) annotation(
+      Placement(transformation(origin = {-80, 28}, extent = {{-10, -10}, {10, 10}})));
+    TankWithVariableValve Tank11(Area = 4, init_height = 30) annotation(
+      Placement(transformation(origin = {166, 28}, extent = {{-22, -22}, {22, 22}})));
+  Modelica.Blocks.Continuous.LimPID PID1(Nd = 5, Td = 10, Ti = 10, controllerType = Modelica.Blocks.Types.SimpleController.PID, k = 100, yMax = 1, yMin = 0) annotation(
+      Placement(transformation(origin = {-80, -50}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Sources.Constant inflow1(k = 10) annotation(
+      Placement(transformation(origin = {-258, 10}, extent = {{-14, -14}, {14, 14}})));
+  Modelica.Blocks.Continuous.LimPID PID2(Nd = 5, Td = 10, Ti = 150, controllerType = Modelica.Blocks.Types.SimpleController.PI, k = 10, yMax = 30, yMin = 10) annotation(
+      Placement(transformation(origin = {-196, 28}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Math.Add add(k1 = 1, k2 = -1)  annotation(
+      Placement(transformation(origin = {8, -46}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Sources.Constant inflow11(k = 1) annotation(
+      Placement(transformation(origin = {-44, -28}, extent = {{-10, -10}, {10, 10}})));
+  equation
+    connect(tank1.qout, Tank11.qin) annotation(
+      Line(points = {{36.8, 27.52}, {139.8, 27.52}}, color = {0, 0, 127}));
+    connect(PID.y, tank1.qin) annotation(
+      Line(points = {{-69, 28}, {-22, 28}}, color = {0, 0, 127}));
+    connect(PID1.u_m, Tank11.heightOut) annotation(
+      Line(points = {{-80, -62}, {-80, -70}, {216, -70}, {216, 18}, {192, 18}}, color = {0, 0, 127}));
+    connect(PID2.y, PID.u_s) annotation(
+      Line(points = {{-185, 28}, {-92, 28}}, color = {0, 0, 127}));
+    connect(PID2.u_m, Tank11.heightOut) annotation(
+      Line(points = {{-196, 16}, {-196, -10}, {214, -10}, {214, 18}, {192, 18}}, color = {0, 0, 127}));
+  connect(inflow1.y, PID2.u_s) annotation(
+      Line(points = {{-243, 10}, {-226.6, 10}, {-226.6, 28}, {-208.6, 28}}, color = {0, 0, 127}));
+  connect(PID1.u_s, inflow1.y) annotation(
+      Line(points = {{-92, -50}, {-226, -50}, {-226, 10}, {-243, 10}}, color = {0, 0, 127}));
+  connect(tank1.out_height, PID.u_m) annotation(
+      Line(points = {{36.8, 16.96}, {56.8, 16.96}, {56.8, -1.04}, {-79.2, -1.04}, {-79.2, 16.96}}, color = {0, 0, 127}));
+  connect(PID1.y, add.u2) annotation(
+      Line(points = {{-69, -50}, {-37, -50}, {-37, -52}, {-5, -52}}, color = {0, 0, 127}));
+  connect(inflow11.y, add.u1) annotation(
+      Line(points = {{-33, -28}, {-17, -28}, {-17, -40}, {-5, -40}}, color = {0, 0, 127}));
+  connect(add.y, Tank11.k_control) annotation(
+      Line(points = {{19, -46}, {117, -46}, {117, 16}, {133, 16}, {133, 18}, {139, 18}}, color = {0, 0, 127}));
+    annotation(
+      experiment(StartTime = 0, StopTime = 600, Tolerance = 1e-06, Interval = 1.2));
+  end ClosedLoopBiControlK2Hysterisis;
   annotation(
     uses(Modelica(version = "4.0.0")));
 end TwoTankProblem;
