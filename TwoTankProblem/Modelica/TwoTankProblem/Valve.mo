@@ -6,6 +6,7 @@ model Valve
   Real height annotation(
     Placement(transformation(origin = {-120, 0}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-120, 0}, extent = {{-20, -20}, {20, 20}})));
   Real k(start = 0.50);
+
 equation
   massFlow = k*sqrt(height);
 annotation(

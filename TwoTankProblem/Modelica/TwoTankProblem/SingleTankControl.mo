@@ -3,7 +3,7 @@ within TwoTankProblem;
 model SingleTankControl
   Tank tank1(Area = 4, DischargeCoefficient = 0.7, init_height = 0) annotation(
     Placement(transformation(origin = {72, 48}, extent = {{-24, -24}, {24, 24}})));
-  Modelica.Blocks.Sources.Constant setpoint(k = 4) annotation(
+  Modelica.Blocks.Sources.Constant setpoint(k = 2) annotation(
     Placement(transformation(origin = {-86, 48}, extent = {{-14, -14}, {14, 14}})));
   Modelica.Blocks.Continuous.LimPID Control(k = 1, Ti = 13.2, yMax = 5, yMin = 0, controllerType = Modelica.Blocks.Types.SimpleController.PI) annotation(
     Placement(transformation(origin = {-32, 48}, extent = {{-10, -10}, {10, 10}})));
