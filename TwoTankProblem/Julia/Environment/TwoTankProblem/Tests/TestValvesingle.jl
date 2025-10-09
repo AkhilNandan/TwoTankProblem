@@ -2,6 +2,8 @@ using ModelingToolkit
 using OrdinaryDiffEq
 using Plots
 using ModelingToolkit: t_nounits as t, D_nounits as D
+using ..Library.Components: Valve
+
 @mtkmodel Test begin
     @variables begin
         x(t) = 0 # Just to make the problem as an ODE

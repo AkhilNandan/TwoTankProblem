@@ -1,6 +1,7 @@
 using ModelingToolkit
 using OrdinaryDiffEq
 using ModelingToolkit: t_nounits as t, D_nounits as D
+using ..Interfaces:ValveInterface
 @mtkmodel Valve begin
     @extend ValveInterface()
     @parameters begin
