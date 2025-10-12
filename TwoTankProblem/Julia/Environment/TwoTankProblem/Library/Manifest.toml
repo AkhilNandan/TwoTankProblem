@@ -2,7 +2,7 @@
 
 julia_version = "1.11.7"
 manifest_format = "2.0"
-project_hash = "dea7cae22b33aab93ec8c697a9b89e5acc4cc18a"
+project_hash = "1781a0128f33b07075bffcf95c750c1c24f65ac0"
 
 [[deps.ADTypes]]
 git-tree-sha1 = "27cecae79e5cc9935255f90c53bb831cc3c870d7"
@@ -1020,6 +1020,12 @@ version = "10.25.0"
     InfiniteOpt = "20393b10-9daf-11e9-18c9-8db751c92c57"
     LabelledArrays = "2ee39098-c373-598a-b85f-a56591580800"
     Pyomo = "0e8e1daf-01b5-4eba-a626-3897743a3816"
+
+[[deps.ModelingToolkitStandardLibrary]]
+deps = ["ChainRulesCore", "DiffEqBase", "IfElse", "LinearAlgebra", "ModelingToolkit", "PreallocationTools", "Symbolics"]
+git-tree-sha1 = "2c7d5000e1c88c2f0b03a16baf6c3c6550716bea"
+uuid = "16a59e39-deab-5bd0-87e4-056b12336739"
+version = "2.25.0"
 
 [[deps.Moshi]]
 deps = ["ExproniconLite", "Jieko"]
