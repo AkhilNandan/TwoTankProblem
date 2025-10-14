@@ -8,7 +8,7 @@ model TwoTankParallelControlWithK2PIDControl
   TankWithVariableValve Tank11(Area = 4, init_height = 0) annotation(
     Placement(transformation(origin = {168, 28}, extent = {{-22, -22}, {22, 22}})));
   Modelica.Blocks.Continuous.LimPID PID1(Nd = 5, Td = 10, Ti = 10, controllerType = Modelica.Blocks.Types.SimpleController.PID, k = 100, yMax = 1, yMin = 0) annotation(
-    Placement(transformation(origin = {-80, -50}, extent = {{-10, -10}, {10, 10}})));
+    Placement(transformation(origin = {-68, -50}, extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Sources.Constant setpoint(k = 10) annotation(
     Placement(transformation(origin = {-258, 10}, extent = {{-14, -14}, {14, 14}})));
   Modelica.Blocks.Continuous.LimPID PID2(Nd = 5, Td = 10, Ti = 150, controllerType = Modelica.Blocks.Types.SimpleController.PI, k = 10, yMax = 30, yMin = 10) annotation(
@@ -23,7 +23,7 @@ equation
   connect(PID.y, tank1.qin) annotation(
     Line(points = {{-69, 28}, {-22, 28}}, color = {0, 0, 127}));
   connect(PID1.u_m, Tank11.heightOut) annotation(
-    Line(points = {{-80, -62}, {-80, -70}, {216, -70}, {216, 18}, {194, 18}}, color = {0, 0, 127}));
+    Line(points = {{-68, -62}, {-68, -70}, {216, -70}, {216, 18}, {194, 18}}, color = {0, 0, 127}));
   connect(PID2.y, PID.u_s) annotation(
     Line(points = {{-185, 28}, {-92, 28}}, color = {0, 0, 127}));
   connect(PID2.u_m, Tank11.heightOut) annotation(
@@ -31,9 +31,9 @@ equation
   connect(setpoint.y, PID2.u_s) annotation(
     Line(points = {{-243, 10}, {-226.6, 10}, {-226.6, 28}, {-208.6, 28}}, color = {0, 0, 127}));
   connect(PID1.u_s, setpoint.y) annotation(
-    Line(points = {{-92, -50}, {-226, -50}, {-226, 10}, {-243, 10}}, color = {0, 0, 127}));
+    Line(points = {{-80, -50}, {-226, -50}, {-226, 10}, {-243, 10}}, color = {0, 0, 127}));
   connect(PID1.y, add.u2) annotation(
-    Line(points = {{-69, -50}, {-37, -50}, {-37, -52}, {-5, -52}}, color = {0, 0, 127}));
+    Line(points = {{-57, -50}, {-37, -50}, {-37, -52}, {-5, -52}}, color = {0, 0, 127}));
   connect(const.y, add.u1) annotation(
     Line(points = {{-33, -28}, {-17, -28}, {-17, -40}, {-5, -40}}, color = {0, 0, 127}));
   connect(add.y, Tank11.k_control) annotation(

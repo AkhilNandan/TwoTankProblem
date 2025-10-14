@@ -2,6 +2,7 @@ using ModelingToolkit
 using OrdinaryDiffEq
 using Plots
 using ModelingToolkit: t_nounits as t, D_nounits as D
+using Library
 using Library.Components: Valve
 
 @mtkmodel Test begin

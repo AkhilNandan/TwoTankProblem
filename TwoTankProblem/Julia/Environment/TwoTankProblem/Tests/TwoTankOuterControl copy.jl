@@ -4,6 +4,7 @@ using Plots
 using ModelingToolkitStandardLibrary
 using ModelingToolkitStandardLibrary.Blocks: LimPID,Constant
 using ModelingToolkit: t_nounits as t, D_nounits as D
+using Library
 using Library.Components: Tank
 @mtkmodel Test begin
     @parameters begin 

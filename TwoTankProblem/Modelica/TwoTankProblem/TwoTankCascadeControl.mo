@@ -12,7 +12,7 @@ model TwoTankCascadeControl
   Modelica.Blocks.Continuous.LimPID PID1(Nd = 5, Td = 10, Ti = 100, controllerType = Modelica.Blocks.Types.SimpleController.PID, k = 100, yMax = 4, yMin = 0) annotation(
     Placement(transformation(origin = {-64, 14}, extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Sources.Constant setpoint1(k = 0.8) annotation(
-    Placement(transformation(origin = {96, 6}, extent = {{-14, -14}, {14, 14}})));
+    Placement(transformation(origin = {94, -8}, extent = {{-14, -14}, {14, 14}})));
 equation
   connect(tank1.qout, Tank11.qin) annotation(
     Line(points = {{34.8, 15.52}, {139.8, 15.52}}, color = {0, 0, 127}));
@@ -27,7 +27,7 @@ equation
   connect(PID.y, PID1.u_s) annotation(
     Line(points = {{-133, 14}, {-76, 14}}, color = {0, 0, 127}));
   connect(setpoint1.y, Tank11.k_control) annotation(
-    Line(points = {{111, 6}, {139.4, 6}}, color = {0, 0, 127}));
+    Line(points = {{109, -8}, {125.2, -8}, {125.2, 6}, {139.4, 6}}, color = {0, 0, 127}));
   annotation(
     experiment(StartTime = 0, StopTime = 600, Tolerance = 1e-06, Interval = 1.2),
 Icon(graphics = {Ellipse(lineColor = {75, 138, 73}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-100, -100}, {100, 100}}), Polygon(lineColor = {0, 0, 255}, fillColor = {75, 138, 73}, pattern = LinePattern.None, fillPattern = FillPattern.Solid, points = {{-36, 60}, {64, 0}, {-36, -60}, {-36, 60}})}),

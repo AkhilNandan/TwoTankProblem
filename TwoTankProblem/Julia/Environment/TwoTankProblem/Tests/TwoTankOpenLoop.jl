@@ -2,14 +2,15 @@ using ModelingToolkit
 using OrdinaryDiffEq
 using Plots
 using ModelingToolkit: t_nounits as t, D_nounits as D
-using ..Library.Components: Tank
+using Library
+using Library.Components: Tank
 @mtkmodel Test begin
     @components begin
         tank1 = Tank(;Area=4, DischargeCoefficient=0.8,init_height=0)
         tank2 = Tank(;Area=4, DischargeCoefficient=0.8,init_height=0)
     end
     @equations begin
-        tank1.q_in.u ~ 2
+        tank1.q_in.value ~ 2
         connect(tank1.q_out,tank2.q_in)
     end
 end

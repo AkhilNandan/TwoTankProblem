@@ -3,6 +3,7 @@ using OrdinaryDiffEq
 using Plots
 using ModelingToolkit: t_nounits as t, D_nounits as D
 using Library.Components: Tank
+using Library
 @mtkmodel Test begin
     @components begin
         tank1 = Library.Components.Tank(;Area=4, DischargeCoefficient=0.8,init_height=0)

@@ -4,6 +4,7 @@ using Plots
 using ModelingToolkitStandardLibrary
 using ModelingToolkitStandardLibrary.Blocks: LimPID,Constant
 using ModelingToolkit: t_nounits as t, D_nounits as D
+using Library
 using Library.Components: Tank
 @mtkmodel Test begin
     @parameters begin 
@@ -16,7 +17,7 @@ using Library.Components: Tank
     end
     @components begin
         setpoint=Constant(name=:setpoint,k=2)
-        tank1 = Library.Components.Tank(; Area=4, DischargeCoefficient=0.8, init_height=0)
+        tank1 = Tank(; Area=4, DischargeCoefficient=0.8, init_height=0)
         controller = LimPID(;k=2,Ti=13.2,Td=0,Ni=0.9,u_max=5,u_min=0,name=:controller)
     end
     @equations begin

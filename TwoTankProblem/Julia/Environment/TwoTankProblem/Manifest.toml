@@ -2,7 +2,7 @@
 
 julia_version = "1.11.7"
 manifest_format = "2.0"
-project_hash = "47c3b7752b5c501574ac47798a97a63725e01de5"
+project_hash = "331859cbb70a4919d21f5146d6bd88dac1bf3a7b"
 
 [[deps.ADTypes]]
 git-tree-sha1 = "27cecae79e5cc9935255f90c53bb831cc3c870d7"
@@ -1104,7 +1104,7 @@ uuid = "4b2f31a3-9ecc-558c-b454-b3730dcb73e9"
 version = "2.41.2+0"
 
 [[deps.Library]]
-deps = ["ModelingToolkit", "OrdinaryDiffEq"]
+deps = ["ModelingToolkit", "ModelingToolkitStandardLibrary", "OrdinaryDiffEq"]
 path = "Library"
 uuid = "7ea7381d-357e-4dbe-a6c3-b3cc440ba0c3"
 version = "0.1.0"
@@ -1306,6 +1306,12 @@ version = "10.25.0"
     InfiniteOpt = "20393b10-9daf-11e9-18c9-8db751c92c57"
     LabelledArrays = "2ee39098-c373-598a-b85f-a56591580800"
     Pyomo = "0e8e1daf-01b5-4eba-a626-3897743a3816"
+
+[[deps.ModelingToolkitStandardLibrary]]
+deps = ["ChainRulesCore", "DiffEqBase", "IfElse", "LinearAlgebra", "ModelingToolkit", "PreallocationTools", "Symbolics"]
+git-tree-sha1 = "2c7d5000e1c88c2f0b03a16baf6c3c6550716bea"
+uuid = "16a59e39-deab-5bd0-87e4-056b12336739"
+version = "2.25.0"
 
 [[deps.Moshi]]
 deps = ["ExproniconLite", "Jieko"]
