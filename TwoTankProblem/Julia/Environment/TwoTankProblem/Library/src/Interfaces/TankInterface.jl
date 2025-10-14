@@ -1,6 +1,8 @@
 using ModelingToolkit
 using OrdinaryDiffEq
+using ModelingToolkitStandardLibrary
 using ModelingToolkit: t_nounits as t, D_nounits as D
+using ModelingToolkitStandardLibrary.Blocks: RealInput, RealOutput
 
 @mtkmodel TankInterface begin
     @components begin
@@ -9,3 +11,4 @@ using ModelingToolkit: t_nounits as t, D_nounits as D
         height_out= RealOutput()
     end
 end
+

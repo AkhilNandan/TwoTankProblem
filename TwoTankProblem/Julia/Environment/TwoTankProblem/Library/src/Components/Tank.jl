@@ -18,9 +18,9 @@ using ..Interfaces: TankInterface
     end
 
     @equations begin
-        Area*D(height) ~ (q_in.value-q_out.value)
+        Area*D(height) ~ (q_in.u-q_out.u)
         static_valve.height ~height
-        height_out.value ~ height
+        height_out.u ~ height
         connect(static_valve.q_out,q_out)
     end
 end

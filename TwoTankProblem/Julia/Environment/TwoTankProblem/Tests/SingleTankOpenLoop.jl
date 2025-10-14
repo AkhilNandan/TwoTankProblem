@@ -5,10 +5,10 @@ using ModelingToolkit: t_nounits as t, D_nounits as D
 using Library.Components: Tank
 @mtkmodel Test begin
     @components begin
-        tank1 = Library.components.Tank(;Area=4, DischargeCoefficient=0.8,init_height=0)
+        tank1 = Library.Components.Tank(;Area=4, DischargeCoefficient=0.8,init_height=0)
     end
     @equations begin
-        tank1.q_in.value ~ 2
+        tank1.q_in.u ~ 2
     end
 end
 @mtkcompile model = Test()

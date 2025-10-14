@@ -9,7 +9,7 @@ using ..Library.Components: Tank
         tank2 = Tank(;Area=4, DischargeCoefficient=0.8,init_height=0)
     end
     @equations begin
-        tank1.q_in.value ~ 2
+        tank1.q_in.u ~ 2
         connect(tank1.q_out,tank2.q_in)
     end
 end

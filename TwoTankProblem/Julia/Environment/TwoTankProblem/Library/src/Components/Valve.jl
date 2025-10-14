@@ -12,7 +12,6 @@ using ..Interfaces:ValveInterface
     end
     
     @equations begin
-        q_out.value~ k*sqrt(height)
+        q_out.u~ k*sqrt(height)
     end
 end
-
